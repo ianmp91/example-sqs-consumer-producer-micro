@@ -1,0 +1,16 @@
+services:
+  elasticmq:
+    image: softwaremill/elasticmq-native
+    container_name: elasticmq
+    ports:
+      - "9324:9324" # Puerto HTTP para comunicación SQS
+      - "9325:9325" # Puerto HTTPS
+    environment:
+      # Definición de colas al iniciar. La sintaxis puede variar,
+      # pero esta es la más simple y común para Spring Cloud AWS.
+      - AWS_ENDPOINT_URL=http://elasticmq:9324
+    command: >
+      # Comando que configura las colas en ElasticMQ
+      -Dconfig.file=/conf/custom.conf
+    volumes:
+      - ./elasticmq/custom.conf:/conf/custom.conf
