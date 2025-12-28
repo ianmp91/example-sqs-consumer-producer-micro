@@ -81,7 +81,7 @@ public class DecryptEncryptMessageUtil {
         return new String(decryptedBytes);
     }
 
-    public EncryptedMessageBundle encryptHybridWithPrivateKey(String plainTextPayload) throws Exception {
+    public EncryptedMessageBundle encryptHybridWithPublicKey(String plainTextPayload) throws Exception {
 
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         keyGen.init(256);
